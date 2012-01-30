@@ -1,0 +1,110 @@
+body { 
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-size: 15px;
+	line-height: 20px;
+	color: #666666;
+	background-color: #242633;
+	background-image:url('miniupload_logo.png');
+	background-repeat:no-repeat;
+	background-position:center top;
+	width: 380px;
+	margin: 10px auto 0px auto;
+}
+
+h1, h2, h3, h4 { margin-top: 0px; }
+div.row { margin-bottom: 10px; }
+*:focus{ outline:none; }
+.floatLeft { float: left; }
+.floatRight { float: right; }
+.clear { clear: both; }
+.notice { }
+
+form {
+	height: 165px;
+	padding: 20px;
+	border: 7px solid #313448;
+	border-radius:10px;
+	-moz-border-radius: 10px;
+	-webkit-box-shadow:0 0 10px #2E3143;
+	-moz-box-shadow: 0 0 10px #2E3143;
+	box-shadow: 0 0 10px #2E3143;
+	margin-top:140px;
+
+	background-image: -moz-linear-gradient(top, #ffffff,#ccc);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ccc));			
+}
+  
+input {			
+	border:1px solid #ccc;
+	font-size: 13px;			
+	padding: 5px 10px 5px 10px;			
+	border-radius:10px;
+	-moz-border-radius: 10px;			
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	align: center;
+}
+  
+input[type=button], input[type=file] {
+	background-image: -moz-linear-gradient(top, #ffffff, #dfdfdf);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#dfdfdf));
+	width: 325px;
+	height: 35px;
+	align: center;
+}
+  
+input:focus, input:hover {
+	-webkit-box-shadow:0 0 10px #ccc;
+	-moz-box-shadow: 0 0 10px #ccc;
+	box-shadow: 0 0 5px #ccc;
+	/* -webkit-transform: scale(1.05); */
+	/* -moz-transform: scale(1.05); */
+	/* transform: scale(1.05); */			
+}
+
+#fileToUpload { width: 325px; }
+
+#progressIndicator { font-size: 10pt; }
+
+#fileInfo {
+	font-size: 10pt;
+	font-style: italic;
+	color: #aaa;
+	margin-top: 10px;
+}
+
+#progressBar {
+	position: relative; 
+	height: 10px; 
+	background-color: #03BFEF;
+	width: 325px;
+	width: 0%; 
+	z-index:10;
+	-moz-border-radius: 2em 2em 2em 2em;
+	border-radius: 2em 2em 2em 2em;		  
+}
+
+#progressNumber {
+	margin: 10px 0 5px 0;
+	text-align: center;
+	font-size: 26px;
+	color: #333333;  
+}
+
+#uploadResponse {
+	  
+}
+
+#footer {
+	margin: 2px auto 0px auto;
+	text-align: center;
+	font-size: 8pt;
+	background-color: #313448;
+	border: 2px solid #313448;
+	border-radius: 5px;
+	-moz-border-radius: 10px;
+	-webkit-box-shadow:0 0 10px #2E3143;
+	-moz-box-shadow: 0 0 10px #2E3143;
+	box-shadow: 0 0 10px #2E3143;	  
+}		  

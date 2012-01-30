@@ -1,0 +1,13 @@
+php_value post_max_size 50M
+php_value upload_max_filesize 50M
+
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks  
+RewriteEngine On  
+  
+RewriteCond %{SCRIPT_FILENAME} !-d  
+RewriteCond %{SCRIPT_FILENAME} !-f  
+  
+RewriteRule ^.*$ ./index.php 
+</IfModule>
+
