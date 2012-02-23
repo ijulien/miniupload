@@ -29,8 +29,10 @@ if ( isset($error) ){
 	echo "<span class=\"notice\">Error :</span> $error";
 }else{
 	$salt = do_upload($_FILES['fileToUpload']);
-	echo "<span class=\"notice\">Your file has been uploaded.</span>
-<a href=\"http://".$base_url."/$salt\">Get it here.</a>"; 
+	echo "<a href=\"http://".$base_url."/$salt\">".$_FILES['fileToUpload']['name']."</a>";
+	$subject = $_FILES['fileToUpload']['name'];
+	$body = urlencode("http://".$base_url."/".$salt);
+	// echo "<a href=\"mailto:custom@custom.com&subject=".$subject."&body=".$body."\">"."Mail this"."</a>";  
 }
 
 exit();

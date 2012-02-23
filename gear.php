@@ -1,6 +1,6 @@
 <?php 
 
-// Generates salt for uploaded file
+// Generates random salt for file or collection
 function generateSalt($max = 15) {
 	$characterList = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 	$i = 0;
@@ -59,13 +59,23 @@ function do_upload($file){
 	return $salt_name;
 }
 
+// Gets a filename from salt in the database
+function get_name($salt){
+	$con = myconnect();
+	$result = mysql_query("SELECT name FROM drop_file where salt='".$salt."'");
+	$filename = mysql_fetch_row($result);
+	$filename = $filename[0];
+	myclose($con);
+	return $filename;
+}
+
 // Deletes a file by a given salt, assuming it exists at least in the database
 function do_delete($salt){
 	// Build the folder string
 	$file_path = getcwd().'/tmp/'.$salt; 
 	// Delete the file...if it exists
 	if (file_exists($file_path)) {
-	unlink($path);
+	unlink($file_path);
 	}
 	// Remove the database entry
 	$con = myconnect();
@@ -75,9 +85,10 @@ function do_delete($salt){
 
 // Downloads a file
 function do_download($file){
+	$download_name = get_name(basename($file));
 	header('Content-Description: File Transfer');
 	header('Content-Type: application/octet-stream');
-	header('Content-Disposition: attachment; filename='.$file_name);
+	header('Content-Disposition: attachment; filename='.$download_name);
 	header('Content-Transfer-Encoding: binary');
 	header('Expires: 0');
 	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -130,6 +141,22 @@ function clean_expired() {
 	while ($flushlist=mysql_fetch_assoc($flushcmd)) {
 		$saltstodelete[] = $flushlist['salt'];
 	}
+	$deletesalts = mysql_query("DELETE FROM drop_file WHERE expire_date < NOW() AND expire_date NOT LIKE '0000-00-00 00:00:00'");
+	myclose($con);
+	if (isset($saltstodelete)) {
+		foreach ($saltstodelete as $salt) {
+			do_delete($salt);
+		}
+	}	
+}
+
+function clean_older_than($days) {
+	$con = myconnect();
+	$flushcmd = mysql_query("SELECT salt FROM drop_file WHERE upload_date < DATE_ADD(NOW(), INTERVAL -".$days." DAY)");
+	while ($flushlist=mysql_fetch_assoc($flushcmd)) {
+		$saltstodelete[] = $flushlist['salt'];
+	}
+	$deletesalts = mysql_query("DELETE FROM drop_file WHERE upload_date < DATE_ADD(NOW(), INTERVAL -".$days." DAY)");
 	myclose($con);
 	if (isset($saltstodelete)) {
 		foreach ($saltstodelete as $salt) {

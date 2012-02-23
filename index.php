@@ -37,39 +37,55 @@ if ($params[1] != "" ) {
 <html>
 <head><title><?php echo $app_name; ?></title>
 <meta name="viewport" content="width=400, initial-scale=1">
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!-- Le styles -->
+    <link href="./bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="./bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 <link type="text/css" href="style.css" rel="stylesheet" media="screen" />
 <script src="upload.js"></script>
+<script type="text/javascript">var switchTo5x=true;</script>
 </head>
 <body>
-<form id="form1" enctype="multipart/form-data" method="post" action="upload.php">
-  <div class="row">
-    <label for="fileToUpload">Choose a file to upload (Max Size : 50Mb)</label><br />
-    <input type="hidden" name="MAX_FILE_SIZE" value="50000000" />
-    <input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();"/>  
-  </div>
-  <div class="row">
-  <input type="button" onclick="uploadFile()" value="Share" />
-  <div id="uploadResponse"></div>
-  </div>
-  <!-- <div id="fileInfo">
-    <div id="fileName"></div>
-    <div id="fileSize"></div>
-    <div id="fileType"></div>
-  </div> -->
-  <div class="row"></div>
-  <div id="progressIndicator">
-    <div id="progressBar"><br />
-    </div>
-    <div id="progressNumber">&nbsp;</div>
-    <div class="clear"></div>
-    <div align="center">
-      <div id="info-upload">&nbsp;</div>
-      <!-- <div id="transferBytesInfo" class="floatRight" style="text-align: right;">&nbsp;</div> -->
-      <div class="clear"></div>
-    </div>
-  </div>  
-</form>
-<div id="footer"><?php echo $app_name; ?> <?php echo $app_version; ?> - <?php echo total_storage(); ?> of storage used</div>
+<div id="screen">
+	<form id="form1" enctype="multipart/form-data" method="post" action="upload.php">
+			<input type="hidden" name="MAX_FILE_SIZE" value="50000000" />
+			<input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected(); resetBar(); "/>  
+			<input type="button" onclick="uploadFile();" id="Upload_button" value="Upload" />
+ 	</form>
+	<div class="progress progress-info progress-striped">
+		<div class="bar" style="width: 0%;">
+			<p>&nbsp;</p>
+		</div>
+	</div>
+  	<div id="info-upload">Select a file, upload & share!</div>
+</div>
+<div id="footer"><?php echo $app_name; ?> <?php echo $app_version; ?> - <?php echo total_storage(); ?> of storage used - <?php echo $expiration_text; ?></div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./bootstrap/js/jquery-1.7.1.min.js"></script>
+    <script src="./bootstrap/js/bootstrap-transition.js"></script>
+    <script src="./bootstrap/js/bootstrap-alert.js"></script>
+    <script src="./bootstrap/js/bootstrap-modal.js"></script>
+    <script src="./bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="./bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="./bootstrap/js/bootstrap-tab.js"></script>
+    <script src="./bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="./bootstrap/js/bootstrap-popover.js"></script>
+    <script src="./bootstrap/js/bootstrap-button.js"></script>
+    <script src="./bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="./bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="./bootstrap/js/bootstrap-typeahead.js"></script>
 
 </body>
 </html>

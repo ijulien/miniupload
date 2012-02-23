@@ -1,3 +1,53 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
 body { 
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-size: 15px;
@@ -11,16 +61,7 @@ body {
 	margin: 10px auto 0px auto;
 }
 
-h1, h2, h3, h4 { margin-top: 0px; }
-div.row { margin-bottom: 10px; }
-*:focus{ outline:none; }
-.floatLeft { float: left; }
-.floatRight { float: right; }
-.clear { clear: both; }
-.notice { }
-
-form {
-	height: 165px;
+#screen {
 	padding: 20px;
 	border: 7px solid #313448;
 	border-radius:10px;
@@ -29,10 +70,32 @@ form {
 	-moz-box-shadow: 0 0 10px #2E3143;
 	box-shadow: 0 0 10px #2E3143;
 	margin-top:140px;
-
 	background-image: -moz-linear-gradient(top, #ffffff,#ccc);
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ccc));			
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ccc));
+	align: center;	  
 }
+
+#footer {
+	align: center;
+	margin: 10px auto 0px auto;
+	text-align: center;
+	font-size: 8pt;
+	background-color: #313448;
+	border: 2px solid #313448;
+	border-radius: 5px;
+	-moz-border-radius: 10px;
+	-webkit-box-shadow:0 0 10px #2E3143;
+	-moz-box-shadow: 0 0 10px #2E3143;
+	box-shadow: 0 0 10px #2E3143;	  
+}
+
+h1, h2, h3, h4 { margin-top: 0px; }
+*:focus{ outline:none; }
+.floatLeft { float: left; }
+.floatRight { float: right; }
+.clear { clear: both; }
+.notice { }
+
   
 input {			
 	border:1px solid #ccc;
@@ -50,8 +113,15 @@ input[type=button], input[type=file] {
 	background-image: -moz-linear-gradient(top, #ffffff, #dfdfdf);
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#dfdfdf));
 	width: 325px;
-	height: 35px;
 	align: center;
+}
+
+input[type=button] {
+	height: 35px;
+}
+
+input[type=file] {
+	height: 35px;
 }
   
 input:focus, input:hover {
@@ -65,8 +135,6 @@ input:focus, input:hover {
 
 #fileToUpload { width: 325px; }
 
-#progressIndicator { font-size: 10pt; }
-
 #fileInfo {
 	font-size: 10pt;
 	font-style: italic;
@@ -74,37 +142,20 @@ input:focus, input:hover {
 	margin-top: 10px;
 }
 
-#progressBar {
-	position: relative; 
-	height: 10px; 
-	background-color: #03BFEF;
-	width: 325px;
-	width: 0%; 
-	z-index:10;
-	-moz-border-radius: 2em 2em 2em 2em;
-	border-radius: 2em 2em 2em 2em;		  
-}
-
-#progressNumber {
-	margin: 10px 0 5px 0;
-	text-align: center;
-	font-size: 26px;
-	color: #333333;  
-}
-
 #uploadResponse {
-	  
+	font-size: 13px;
 }
 
-#footer {
-	margin: 2px auto 0px auto;
+#info-upload {
+	font-size: 10px;
 	text-align: center;
-	font-size: 8pt;
-	background-color: #313448;
-	border: 2px solid #313448;
-	border-radius: 5px;
-	-moz-border-radius: 10px;
-	-webkit-box-shadow:0 0 10px #2E3143;
-	-moz-box-shadow: 0 0 10px #2E3143;
-	box-shadow: 0 0 10px #2E3143;	  
+	margin-bottom: 10px;
+}
+
+.bar p {
+	color: white;
+	font-size: 12px;
+	text-align: right;
+	padding-right: 2px;
+	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
 }		  
